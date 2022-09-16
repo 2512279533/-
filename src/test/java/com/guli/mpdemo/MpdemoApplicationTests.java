@@ -21,4 +21,20 @@ class MpdemoApplicationTests {
 
     }
 
+    @Test
+    void ttt(){
+        User user=new User();
+        user.setAge(11);
+        user.setName("zzz");
+        userMapper.insert(user);
+    }
+
+
+    @Test
+    void delete(){
+        userMapper.deleteById(2L);
+
+
+    }
+
 }

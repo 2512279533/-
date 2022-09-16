@@ -8,7 +8,7 @@ import java.util.Date;
 
 @Data
 public class User {
-    @TableId(type = IdType.AUTO)
+    @TableId(type = IdType.ID_WORKER)
     private Long id;
     private String name;
     private Integer age;
@@ -23,4 +23,8 @@ public class User {
     @Version
     @TableField(fill = FieldFill.INSERT)
     private int version;
+
+    @TableLogic
+    @TableField(fill = FieldFill.INSERT)
+    private int deleted;
 }
