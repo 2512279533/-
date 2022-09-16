@@ -13,14 +13,11 @@ class MpdemoApplicationTests {
     private UserMapper userMapper;
     @Test
     void contextLoads() {
-        User user=new User();
+        //测试乐观锁
+        User user = userMapper.selectById(1L);
+        user.setAge(22);
 
-        user.setId(1L);
-        user.setAge(5);
-        user.setName("xxxx");
         userMapper.updateById(user);
-
-        System.out.println(user);
 
     }
 
