@@ -13,11 +13,10 @@ class MpdemoApplicationTests {
     private UserMapper userMapper;
     @Test
     void contextLoads() {
-        //测试乐观锁
-        User user = userMapper.selectById(1L);
-        user.setAge(22);
 
-        userMapper.updateById(user);
+        User user = userMapper.selectById(4L);
+
+        System.out.println(user);
 
     }
 
@@ -32,9 +31,6 @@ class MpdemoApplicationTests {
 
     @Test
     void delete(){
-        userMapper.deleteById(2L);
-
-
+        userMapper.deleteById(4L);
     }
-
 }
