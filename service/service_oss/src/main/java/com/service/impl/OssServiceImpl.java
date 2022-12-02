@@ -30,8 +30,8 @@ public class OssServiceImpl implements OssService {
                 // 填写Object完整路径，完整路径中不能包含Bucket名称，例如exampledir/exampleobject.txt。
 
         String objectName = new DateTime().toString("yyyy/MM/dd")+"/"+file.getOriginalFilename();
-                // 填写本地文件的完整路径，例如D:\\localpath\\examplefile.txt。
-                // 如果未指定本地路径，则默认从示例程序所属项目对应本地路径中上传文件流。
+                // 填写本地文件的完整路径，例如D:\\localpath\\examplefile.txt。``````````
+                // 如果未指定本地路径，则默认从示例程序所属项目对应本地路径中上传文件流。``````````
                 String filePath= file.getOriginalFilename();
 
                 // 创建OSSClient实例。

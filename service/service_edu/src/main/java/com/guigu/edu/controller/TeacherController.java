@@ -3,25 +3,18 @@ package com.guigu.edu.controller;
 
 import com.atguigu.commonutils.R;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.guigu.GlobalExaeption.guliException;
 import com.guigu.edu.entity.Teacher;
 import com.guigu.edu.query.TeacherQuery;
 import com.guigu.edu.service.TeacherService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
-import org.apache.http.HttpRequest;
-import org.apache.http.HttpResponse;
-import org.jcp.xml.dsig.internal.dom.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -32,7 +25,6 @@ import java.util.List;
  * @author guli
  * @since 2022-09-17
  */
-@CrossOrigin(allowCredentials = "true")   //解决跨域问题
 @Api(tags = "讲师管理")
 @RestController
 @RequestMapping("/eduservice/teacher")

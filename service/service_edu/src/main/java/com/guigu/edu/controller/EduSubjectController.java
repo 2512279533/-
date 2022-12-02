@@ -4,13 +4,11 @@ package com.guigu.edu.controller;
 import com.atguigu.commonutils.R;
 import com.guigu.edu.entity.EduSubject;
 import com.guigu.edu.entity.SubjectNestEdVo;
-import com.guigu.edu.entity.SubjectVo;
 import com.guigu.edu.service.EduSubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import org.springframework.web.multipart.MultipartFile;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.List;
 
@@ -24,7 +22,6 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/eduservice/subject")
-@CrossOrigin(allowCredentials = "true")
 public class EduSubjectController {
 
     @Autowired

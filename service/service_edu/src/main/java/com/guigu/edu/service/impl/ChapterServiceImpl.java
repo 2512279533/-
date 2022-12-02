@@ -36,6 +36,7 @@ public class ChapterServiceImpl extends ServiceImpl<ChapterMapper, Chapter> impl
         //根据课程id查询课程里面的所有的章节
         QueryWrapper<Chapter> queryWrapper=new QueryWrapper<>();
         queryWrapper.eq("course_id",courseId);
+        queryWrapper.orderByDesc("sort");
 
         List<Chapter> chapterList = baseMapper.selectList(queryWrapper);
 
@@ -65,4 +66,5 @@ public class ChapterServiceImpl extends ServiceImpl<ChapterMapper, Chapter> impl
 
         return chapterVoList;
     }
+
 }

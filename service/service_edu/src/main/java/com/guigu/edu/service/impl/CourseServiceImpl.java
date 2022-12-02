@@ -1,12 +1,15 @@
 package com.guigu.edu.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.guigu.edu.client.VodClient;
 import com.guigu.edu.entity.Chapter;
 import com.guigu.edu.entity.Course;
 import com.guigu.edu.entity.CourseDescription;
 import com.guigu.edu.entity.Video;
+import com.guigu.edu.entity.vo.CourseFrontVo;
 import com.guigu.edu.entity.vo.CoursePublicVo;
+import com.guigu.edu.entity.vo.CourseWebVo;
 import com.guigu.edu.mapper.ChapterMapper;
 import com.guigu.edu.mapper.CourseDescriptionMapper;
 import com.guigu.edu.mapper.CourseMapper;
@@ -20,7 +23,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>
@@ -145,5 +150,56 @@ public class CourseServiceImpl extends ServiceImpl<CourseMapper, Course> impleme
         //根据id删除课程本身
 
         baseMapper.deleteById(courseId);
+    }
+
+    @Override
+    public Map<String, Object> getCourseFrontList(Page<Course> pageCourse, CourseFrontVo courseFrontVo) {
+        //2 根据讲师id查询所讲课程
+        QueryWrapper<Course> wrapper = new QueryWrapper<>();
+        //判断条件值是否为空，不为空拼接
+        if(!org.springframework.util.StringUtils.isEmpty(courseFrontVo.getSubjectParentId())) { //一级分类
+            wrapper.eq("subject_parent_id",courseFrontVo.getSubjectParentId());
+        }
+        if(!org.springframework.util.StringUtils.isEmpty(courseFrontVo.getSubjectId())) { //二级分类
+            wrapper.eq("subject_id",courseFrontVo.getSubjectId());
+        }
+        if(!org.springframework.util.StringUtils.isEmpty(courseFrontVo.getBuyCountSort())) { //关注度
+            wrapper.orderByDesc("buy_count");
+        }
+        if (!org.springframework.util.StringUtils.isEmpty(courseFrontVo.getGmtCreateSort())) { //最新
+            wrapper.orderByDesc("gmt_create");
+        }
+
+        if (!org.springframework.util.StringUtils.isEmpty(courseFrontVo.getPriceSort())) {//价格
+            wrapper.orderByDesc("price");
+        }
+
+        baseMapper.selectPage(pageCourse,wrapper);
+
+        List<Course> records = pageCourse.getRecords();
+        long current = pageCourse.getCurrent();
+        long pages = pageCourse.getPages();
+        long size = pageCourse.getSize();
+        long total = pageCourse.getTotal();
+        boolean hasNext = pageCourse.hasNext();//下一页
+        boolean hasPrevious = pageCourse.hasPrevious();//上一页
+
+        //把分页数据获取出来，放到map集合
+        Map<String, Object> map = new HashMap<>();
+        map.put("items", records);
+        map.put("current", current);
+        map.put("pages", pages);
+        map.put("size", size);
+        map.put("total", total);
+        map.put("hasNext", hasNext);
+        map.put("hasPrevious", hasPrevious);
+
+        //map返回
+        return map;
+    }
+
+    @Override
+    public CourseWebVo getBaseCourseInfo(String courseId) {
+       return baseMapper.getBaseCourseInfo(courseId);
     }
 }

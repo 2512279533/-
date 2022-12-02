@@ -24,7 +24,6 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/eduservice/chapter")
-@CrossOrigin(allowCredentials = "true")
 public class ChapterController {
 
     @Autowired

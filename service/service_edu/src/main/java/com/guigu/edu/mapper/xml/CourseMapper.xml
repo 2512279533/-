@@ -10,4 +10,18 @@
                            left join edu_course_description ecd on ecd.id=ec.id
         where ec.id=#{id}
     </select>
+
+    <select id="getBaseCourseInfo" resultType="com.guigu.edu.entity.vo.CourseWebVo">
+        select ec.id,ec.title,ec.price,ec.lesson_num as lessonNum,ecd.description,
+               ec.buy_count as buyCount,ec.view_count as viewCount,ecd.description,
+               et.id as teacherId,et.name as teacherName,et.career as intro,et.avatar,
+               es.id as subjectLevelOneId,es.title as subjectLevelOne,
+               es2.id as subjectLevelTwoId ,es2.title as subjectLevelTwo,ec.cover
+        from edu_course ec left join edu_teacher et on ec.teacher_id=et.id
+                           left join edu_subject es on es.id=ec.subject_parent_id
+                           left join edu_subject es2 on ec.subject_id=es2.id
+                           left join edu_course_description ecd on ecd.id=ec.id
+        where ec.id=#{courseId}
+    </select>
+
 </mapper>

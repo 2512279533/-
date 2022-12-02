@@ -3,7 +3,7 @@ package com.guigu.edu.controller;
 import com.atguigu.commonutils.R;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(allowCredentials = "true")   //解决跨域问题
+   //解决跨域问题
 @RestController
 @RequestMapping("/eduservice/user")
 public class EduTeacherController {

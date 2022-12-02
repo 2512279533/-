@@ -21,9 +21,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/eduservice/course")
-@CrossOrigin(allowCredentials = "true")
 public class CourseController {
-
 
     @Autowired
     private CourseService courseService;

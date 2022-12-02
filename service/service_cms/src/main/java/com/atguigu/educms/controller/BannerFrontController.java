@@ -23,8 +23,6 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/educms/bannerfront")
-@CrossOrigin(allowCredentials = "true")
-
 public class BannerFrontController {
 
     @Autowired

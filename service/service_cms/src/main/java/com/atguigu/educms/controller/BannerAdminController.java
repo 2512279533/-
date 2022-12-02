@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/educms/banneradmin")
-@CrossOrigin(allowCredentials = "true")
 public class BannerAdminController {
 
     @Autowired

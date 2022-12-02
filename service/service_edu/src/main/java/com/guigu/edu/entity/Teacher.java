@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.annotation.*;
 
 import java.util.Date;
 import java.io.Serializable;
+
+import com.baomidou.mybatisplus.extension.activerecord.Model;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -23,7 +25,7 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @TableName("edu_teacher")
 @ApiModel(value="Teacher对象", description="讲师")
-public class Teacher implements Serializable {
+public class Teacher extends Model<Teacher> implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
